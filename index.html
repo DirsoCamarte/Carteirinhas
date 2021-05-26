@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treino pra prova - Documentos GM</title>
+
+    <style>
+        h1{
+            font-family: Rockwell;
+        }
+
+        main, footer{
+            text-align: center;
+        }
+
+        button{
+            padding: 20px;
+            border: 3px solid black;
+            border-radius: 20%;
+            margin-bottom: 20px;
+            font-family: Comic Sans MS;
+        }
+
+        #formu{
+            display: flex;
+            align-items: baseline;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        input, select{
+            margin-bottom: 8px;
+            border: 2px dotted black;
+        }
+
+        #carteiras{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #carteiras .cart{
+            background-image: url("imgstreino/paisagem.jpg");
+            margin-bottom: 15px;
+        }
+
+        #carteiras div{
+            max-width: 800px;
+            width: 700px;
+        }
+
+        #carteiras img{
+            float: left;
+        }
+
+        #txt{
+            color: black;
+            font-family: Comic Sans MS;
+            font-size: 20px;
+        }
+
+    </style>
+
+    <script>
+        function sortearimg(){
+            var imgs = [
+                "imgstreino/img1.jpg", "imgstreino/img2.jpg", "imgstreino/img3.jpg", "imgstreino/img4.jpg", "imgstreino/img5.jpg", "imgstreino/img6.jpg", "imgstreino/img7.jpg", "imgstreino/img8.jpg", "imgstreino/img9.jpg", "imgstreino/img10.jpg"
+                ];
+
+            var escolha = Math.floor(Math.random() * 10);
+
+            return imgs[escolha];
+        }
+
+        function gerarcarteirinha(){
+            var objetosForm = document.forms["formu"];
+            var carteirinhasAntes = document.getElementById("carteiras").innerHTML;
+            var carteira    = "";
+            var imagem = sortearimg();
+
+            //0 - nome
+            //1 - profissao
+            //2 - idade
+            //3 - calcinha
+            
+            carteira += "<div class='cart' style='border: 5px black solid';>" + 
+            "<img src='" + imagem + "' alt='Foto' width='250px' height='250px'>" +
+            "<span id='txt'>" + "<span style='font-family: Rockwell;'> <ins> Carteirinha: G.M. </ins> </span>" + "<br>" +
+            "Nome: " + objetosForm.elements[0].value  + "<br>Profissão: " + objetosForm.elements[1].value  + "<br>Idade: " + objetosForm.elements[2].value + "<br>Tipo de Calcinha: " + objetosForm.elements[3].value + 
+            "</div>" +
+            "</div>" + "\n";
+
+            document.getElementById("carteiras").innerHTML = carteirinhasAntes + carteira;
+        }
+    </script>
+
+</head>
+<body bgcolor="grey">
+    <main>
+        <h1>Cadastro de Carteirinha: G.M.</h1>
+
+        <form id="formu">
+            <label for="nome">Nome </label>
+            <input type="text" id="nome">
+            <br>
+            <label for="trampo">Profissão </label>
+            <input type="text" id="trampo">
+            <br>
+            <label for="age">Idade </label>
+            <input type="number" id="age">
+            <br>
+            <label for="calcinhas">Tipo da Calcinha</label>
+            <select id="calcinhas">
+                    <option value="Renda">Renda</option>
+                    <option value="Fio Dental">Fio Dental</option>
+                    <option value="Tanga">Tanga</option>
+                    <option value="Biquini">Biquini</option>
+                    <option value="Caleçon">Caleçon</option>
+                    <option value="Hot Pants">Hot Pants</option>
+                    <option value="Sem costura">Sem costura</option>
+            </select>
+        </form>
+
+        <button onclick="gerarcarteirinha()"> <b>Gerar Carteirinha!</b></button>
+
+        <div id="carteiras">
+        </div>
+
+    </main>
+
+    <footer>
+        <img src="imgstreino/safe.png" alt="site seguro" width="800px" height="125px">
+        <br>
+        <img src="imgstreino/safe2.png" alt="site seguro" width="800px" height="125px">
+        <br>
+        <img src="imgstreino/safe3.png" alt="site seguro" width="800px" height="125px">
+    </footer>
+</body>
+</html>
